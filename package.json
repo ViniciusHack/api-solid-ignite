@@ -6,7 +6,9 @@
   "scripts": {
     "start": "node build/server.js",
     "start:dev": "tsx --watch src/server.ts",
-    "build": "tsup src --out-dir build"
+    "build": "tsup src --out-dir build",
+    "test": "vitest run",
+    "test:watch": "vitest"
   },
   "keywords": [],
   "author": "",
@@ -24,8 +26,11 @@
     "@types/node": "20.2.5",
     "eslint": "8.41.0",
     "prisma": "4.15.0",
+    "supertest": "6.3.3",
     "tsup": "6.7.0",
     "tsx": "3.12.7",
-    "typescript": "5.0.4"
+    "typescript": "5.0.4",
+    "vite-tsconfig-paths": "4.2.0",
+    "vitest": "0.31.3"
   }
 }
