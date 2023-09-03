@@ -5,7 +5,6 @@ import { z } from 'zod'
 
 export async function authenticate(req: FastifyRequest, reply: FastifyReply) {
   const authenticateBodySchema = z.object({
-    name: z.string(),
     email: z.string().email(),
     password: z.string().min(6),
   })
