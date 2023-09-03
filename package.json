@@ -12,6 +12,7 @@
     "test:coverage": "vitest run --coverage",
     "test:ui": "vitest --ui",
     "test:e2e": "vitest run --dir src/http",
+    "test:e2e:watch": "vitest --dir src/http",
     "pretest:e2e": "cd prisma/vitest-environment-prisma && npm link && cd .. && npm link vitest-environment-prisma"
   },
   "keywords": [],
@@ -30,6 +31,7 @@
   "devDependencies": {
     "@rocketseat/eslint-config": "1.2.0",
     "@types/node": "20.2.5",
+    "@types/supertest": "2.0.12",
     "@vitest/coverage-c8": "0.31.3",
     "@vitest/ui": "0.31.3",
     "eslint": "8.41.0",
