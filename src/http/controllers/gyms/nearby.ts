@@ -4,10 +4,10 @@ import { z } from 'zod'
 
 export async function nearbyGyms(req: FastifyRequest, reply: FastifyReply) {
   const nearbyGymsQuerySchema = z.object({
-    latitude: z.number().refine(value => {
+    latitude: z.coerce.number().refine(value => {
       return Math.abs(value) <= 90
     }),
-    longitude: z.number().refine(value => {
+    longitude: z.coerce.number().refine(value => {
       return Math.abs(value) <= 180
     })
   })
@@ -16,10 +16,10 @@ export async function nearbyGyms(req: FastifyRequest, reply: FastifyReply) {
 
   try {
     const nearbyGymsUseCase = makeFetchNearbyGymsUseCase()
-    await nearbyGymsUseCase.execute({ userLatitude: latitude, userLongitude: longitude } )
+    const gyms = await nearbyGymsUseCase.execute({ userLatitude: latitude, userLongitude: longitude } )
+    return reply.status(200).send(gyms)
   } catch (err) {
     throw err
   }
 
-  return reply.status(200).send()
 }
