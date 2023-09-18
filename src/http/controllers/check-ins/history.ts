@@ -9,13 +9,11 @@ export async function checkInHistory(req: FastifyRequest, reply: FastifyReply) {
 
   const { page } = checkInHistoryQuerySchema.parse(req.query)
 
-  try {
-    const fetchUserCheckInsHistoryUseCase = makeFetchUserCheckInsHistoryUseCase()
-    const { checkIns } = await fetchUserCheckInsHistoryUseCase.execute({ page, userId: req.user.sub } )
-    return reply.status(200).send({
-      checkIns
-    })
-  } catch (err) {
-    throw err
-  }
+  const fetchUserCheckInsHistoryUseCase = makeFetchUserCheckInsHistoryUseCase()
+
+  const { checkIns } = await fetchUserCheckInsHistoryUseCase.execute({ page, userId: req.user.sub } )
+  
+  return reply.status(200).send({
+    checkIns
+  })
 }
